@@ -1,23 +1,24 @@
-import React from 'react'
-import AddTask from './components/AddTask';
-import TaskList from './components/TaskList'
-
+import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import Positions from "./pages/Positions";
 
 function App() {
   return (
-    <div className="row p-3">
-      <div className="col-md-6 offset-3">
-        <div className="card">
-          <div className="card-header py-3">
-            <AddTask/>
-          </div>
-          <div className="card-body">
-            <TaskList/>
-          </div>
+    <div className="container">
+      <div className="row my-3">
+        <div className="col">
+          <Link to="/positions"><button className="btn btn-outline-primary" >Lavozimlar</button></Link> 
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <Switch>
+            <Route path={'/positions'} component={Positions} /> 
+          </Switch>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

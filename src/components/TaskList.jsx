@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { hadleCheck } from "../redux/actions";
+import { hadleCheck } from "../redux/actions/actions";
 
 function TaskList({ todos, hadleCheck }) {
   return (

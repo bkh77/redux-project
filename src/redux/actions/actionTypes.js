@@ -1,0 +1,5 @@
+export const COMPLETED = "COMPLETED";
+export const ADD_POSITION = "ADD_POSITION";
+export const DELETE_POSITION = "DELETE_POSITION";
+export const EDIT_POSITION = "EDIT_POSITION";
+
