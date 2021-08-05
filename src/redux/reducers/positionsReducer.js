@@ -19,17 +19,6 @@ export default function positionsReducer(
         positions,
       };
       break;
-    case types.COMPLETED:
-      let arr = state.todos.map((item) => {
-        if (item.id === action.payload) {
-          item = { ...item, completed: !item.completed };
-        }
-        return item;
-      });
-      state = {
-        todos: arr,
-      };
-      break;
     case types.DELETE_POSITION:
       const clone = [...state.positions];
       const filtered = clone.filter((i) => i.id !== action.payload);

@@ -1,17 +1,12 @@
 import * as types from "./actionTypes";
 
-export function hadleCheck(id) {
-  return {
-    type: types.COMPLETED,
-    payload: id,
-  };
-}
 export function addPosition(obj) {
   return {
     type: types.ADD_POSITION,
     payload: obj,
   };
 }
+
 export function deletePosition(id) {
   return {
     type: types.DELETE_POSITION,
@@ -21,6 +16,26 @@ export function deletePosition(id) {
 export function editPosition(obj) {
   return {
     type: types.EDIT_POSITION,
+    payload: obj,
+  };
+}
+
+export function addDegree(obj) {
+  return {
+    type: types.ADD_DEGREE,
+    payload: obj,
+  };
+}
+
+export function deleteDegree(id) {
+  return {
+    type: types.DELETE_DEGREE,
+    payload: id,
+  };
+}
+export function editDegree(obj) {
+  return {
+    type: types.EDIT_DEGREE,
     payload: obj,
   };
 }

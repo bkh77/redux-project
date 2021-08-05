@@ -8,12 +8,12 @@ import {
   Form,
 } from "reactstrap";
 
-function PosModal({ toggle, modal, handleSubmit, currentItem }) {
+function DegreeModal({ toggle, modal, handleSubmit, currentItem }) {
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader>
-          Lavozim {currentItem ? "o'zgartirish" : "qo'shish"}
+          Ilmiy daraja {currentItem ? "o'zgartirish" : "qo'shish"}{" "}
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit} id="pos">
@@ -24,10 +24,10 @@ function PosModal({ toggle, modal, handleSubmit, currentItem }) {
               placeholder="Nomi..."
             />
             <input
-              defaultValue={currentItem.salary}
+              defaultValue={currentItem.bonus}
               type="number"
               className="form-control "
-              placeholder="Maosh..."
+              placeholder="Bonus..."
             />
           </Form>
         </ModalBody>
@@ -44,4 +44,4 @@ function PosModal({ toggle, modal, handleSubmit, currentItem }) {
   );
 }
 
-export default PosModal;
+export default DegreeModal;

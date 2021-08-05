@@ -3,14 +3,10 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import PosModal from "../components/PosModal";
-import {
-  addPosition,
-  deletePosition,
-  editPosition,
-} from "../redux/actions/actions";
+import { addDegree, deleteDegree, editDegree } from "../redux/actions/actions";
+import DegreeModal from "../components/DegreeModal";
 
-function Positions({ positions, addPosition, deletePosition, editPosition }) {
+function AcademicDegrees({ degrees, addDegree, deleteDegree, editDegree }) {
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -20,21 +16,21 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
   function handleSubmit(e) {
     e.preventDefault();
     const name = e.target[0].value;
-    const salary = e.target[1].value;
+    const bonus = e.target[1].value;
     if (currentItem) {
-      editPosition({
+      editDegree({
         id: currentItem.id,
         name,
-        salary,
+        bonus,
       });
       toggle();
       setCurrentItem("");
     } else {
-      if (name && salary) {
-        addPosition({
-          id: positions.length + 1,
+      if (name && bonus) {
+        addDegree({
+          id: degrees.length + 1,
           name,
-          salary,
+          bonus,
         });
         toggle();
       }
@@ -50,10 +46,16 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
     <div className="card p-3">
       <div className="row">
         <div className="col">
-          <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" className="form-control" placeholder="Search..." />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+          />
         </div>
         <div className="col-md-8 text-center">
-          <h2>Lavozimlar</h2>
+          <h2>Ilmiy darajalar</h2>
         </div>
         <div className="col">
           <button onClick={toggle} className="btn btn-outline-secondary w-100">
@@ -68,12 +70,12 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
               <tr>
                 <th>#</th>
                 <th>Nomi</th>
-                <th>Maosh</th>
+                <th>Bonus</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {positions
+              {degrees
                 .filter((item) =>
                   item.name.toLowerCase().includes(search.toLowerCase())
                 )
@@ -81,7 +83,7 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
                   <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
-                    <td>{item.salary}</td>
+                    <td>{item.bonus}</td>
                     <td>
                       <EditIcon
                         className="editIcon"
@@ -89,7 +91,7 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
                       />
                       <DeleteForeverIcon
                         className="deleteIcon"
-                        onClick={() => deletePosition(item.id)}
+                        onClick={() => deleteDegree(item.id)}
                       />
                     </td>
                   </tr>
@@ -98,7 +100,7 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
           </table>
         </div>
       </div>
-      <PosModal
+      <DegreeModal
         toggle={toggle}
         modal={modal}
         handleSubmit={handleSubmit}
@@ -108,10 +110,10 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
   );
 }
 export default connect(
-  ({ positionsReducer }) => ({ positions: positionsReducer.positions }),
+  ({ degreeReducer }) => ({ degrees: degreeReducer.degrees }),
   {
-    addPosition,
-    deletePosition,
-    editPosition,
+    addDegree,
+    deleteDegree,
+    editDegree,
   }
-)(Positions);
+)(AcademicDegrees);
