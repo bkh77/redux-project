@@ -39,3 +39,23 @@ export function editDegree(obj) {
     payload: obj,
   };
 }
+
+export function addStaff(obj) {
+  return {
+    type: types.ADD_STAFF,
+    payload: obj,
+  };
+}
+
+export function deleteStaff(id) {
+  return {
+    type: types.DELETE_STAFF,
+    payload: id,
+  };
+}
+export function editStaff(obj) {
+  return {
+    type: types.EDIT_STAFF,
+    payload: obj,
+  };
+}

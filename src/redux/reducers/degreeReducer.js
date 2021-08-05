@@ -4,7 +4,7 @@ export default function degreeReducer(
   state = {
     degrees: [
       { id: 1, name: "Junior", bonus: 10 },
-      { id: 2, name: "Midle", bonus: 15 },
+      { id: 2, name: "Middle", bonus: 15 },
       { id: 3, name: "Senior", bonus: 30 },
     ],
   },
