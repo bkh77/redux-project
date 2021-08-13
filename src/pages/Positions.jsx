@@ -46,14 +46,14 @@ function Positions({ positions, addPosition, delPosition, editPosition }) {
   }
 
   return (
-    <div className="card p-3">
+    <div className="card p-3 lightRed">
       <div className="row">
         <div className="col">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
-            className="form-control"
+            className="form-control radusInput"
             placeholder="Search..."
           />
         </div>
@@ -61,7 +61,7 @@ function Positions({ positions, addPosition, delPosition, editPosition }) {
           <h2>Lavozimlar</h2>
         </div>
         <div className="col">
-          <button onClick={toggle} className="btn btn-outline-secondary w-100">
+          <button onClick={toggle} className="btn btn-outline-danger w-100">
             + Add
           </button>
         </div>

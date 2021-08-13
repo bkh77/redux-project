@@ -54,14 +54,14 @@ function Staffs({ staffs, positions, degrees, addStaff, delStaff, editStaff }) {
   }
 
   return (
-    <div className="card p-3">
+    <div className="card lightBlue p-3">
       <div className="row">
         <div className="col">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
-            className="form-control"
+            className="form-control radusInput"
             placeholder="Search..."
           />
         </div>
@@ -69,7 +69,7 @@ function Staffs({ staffs, positions, degrees, addStaff, delStaff, editStaff }) {
           <h2>Xodimlar</h2>
         </div>
         <div className="col">
-          <button onClick={toggle} className="btn btn-outline-secondary w-100">
+          <button onClick={toggle} className="btn btn-outline-primary w-100">
             + Add
           </button>
         </div>

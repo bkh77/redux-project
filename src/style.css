@@ -7,3 +7,15 @@
   color: #ee5253;
   cursor: pointer;
 }
+.lightBlue {
+  background-color: #b2e6ec;
+}
+.lightRed {
+  background-color: #f1cac9;
+}
+.lightGreen {
+  background-color: #b6f5ca;
+}
+.radusInput{
+  border-radius: 50px;
+}

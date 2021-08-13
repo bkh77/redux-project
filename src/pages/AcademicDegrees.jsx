@@ -43,14 +43,14 @@ function AcademicDegrees({ degrees, addDegree, delDegree, editDegree }) {
   }
 
   return (
-    <div className="card p-3">
+    <div className="card p-3 lightGreen">
       <div className="row">
         <div className="col">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
-            className="form-control"
+            className="form-control radusInput"
             placeholder="Search..."
           />
         </div>
@@ -58,7 +58,7 @@ function AcademicDegrees({ degrees, addDegree, delDegree, editDegree }) {
           <h2>Ilmiy darajalar</h2>
         </div>
         <div className="col">
-          <button onClick={toggle} className="btn btn-outline-secondary w-100">
+          <button onClick={toggle} className="btn btn-outline-success w-100">
             + Add
           </button>
         </div>
