@@ -5,16 +5,9 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import StaffModal from "../components/StaffModal";
 
-import { addStaff, deleteStaff, editStaff } from "../redux/actions/actions";
+import { addStaff, delStaff, editStaff } from "../redux/store/staffReducer";
 
-function Staffs({
-  staffs,
-  positions,
-  degrees,
-  addStaff,
-  deleteStaff,
-  editStaff,
-}) {
+function Staffs({ staffs, positions, degrees, addStaff, delStaff, editStaff }) {
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -121,7 +114,7 @@ function Staffs({
                       />
                       <DeleteForeverIcon
                         className="deleteIcon"
-                        onClick={() => deleteStaff(item.id)}
+                        onClick={() => delStaff(item.id)}
                       />
                     </td>
                   </tr>
@@ -142,14 +135,18 @@ function Staffs({
   );
 }
 export default connect(
-  ({ staffReducer, positionsReducer, degreeReducer }) => ({
-    staffs: staffReducer.staffs,
-    positions: positionsReducer.positions,
-    degrees: degreeReducer.degrees,
+  ({
+    staffReducer: { staffs },
+    positionsReducer: { positions },
+    degreeReducer: { degrees },
+  }) => ({
+    staffs,
+    positions,
+    degrees,
   }),
   {
     addStaff,
-    deleteStaff,
+    delStaff,
     editStaff,
   }
 )(Staffs);

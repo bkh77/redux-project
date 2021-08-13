@@ -3,10 +3,10 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import { addDegree, deleteDegree, editDegree } from "../redux/actions/actions";
+import { addDegree, delDegree, editDegree } from "../redux/store/degreeReducer";
 import DegreeModal from "../components/DegreeModal";
 
-function AcademicDegrees({ degrees, addDegree, deleteDegree, editDegree }) {
+function AcademicDegrees({ degrees, addDegree, delDegree, editDegree }) {
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -91,7 +91,7 @@ function AcademicDegrees({ degrees, addDegree, deleteDegree, editDegree }) {
                       />
                       <DeleteForeverIcon
                         className="deleteIcon"
-                        onClick={() => deleteDegree(item.id)}
+                        onClick={() => delDegree(item.id)}
                       />
                     </td>
                   </tr>
@@ -109,11 +109,8 @@ function AcademicDegrees({ degrees, addDegree, deleteDegree, editDegree }) {
     </div>
   );
 }
-export default connect(
-  ({ degreeReducer }) => ({ degrees: degreeReducer.degrees }),
-  {
-    addDegree,
-    deleteDegree,
-    editDegree,
-  }
-)(AcademicDegrees);
+export default connect(({ degreeReducer: { degrees } }) => ({ degrees }), {
+  addDegree,
+  delDegree,
+  editDegree,
+})(AcademicDegrees);

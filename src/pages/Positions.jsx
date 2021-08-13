@@ -1,16 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import PosModal from "../components/PosModal";
 import {
   addPosition,
-  deletePosition,
+  delPosition,
   editPosition,
-} from "../redux/actions/actions";
+} from "../redux/store/positionsReducer";
 
-function Positions({ positions, addPosition, deletePosition, editPosition }) {
+function Positions({ positions, addPosition, delPosition, editPosition }) {
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -89,7 +88,8 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
                       />
                       <DeleteForeverIcon
                         className="deleteIcon"
-                        onClick={() => deletePosition(item.id)}
+                        onClick={() => delPosition(item.id)}
+                        
                       />
                     </td>
                   </tr>
@@ -108,10 +108,10 @@ function Positions({ positions, addPosition, deletePosition, editPosition }) {
   );
 }
 export default connect(
-  ({ positionsReducer }) => ({ positions: positionsReducer.positions }),
+  ({ positionsReducer:{positions} }) => ({ positions }),
   {
     addPosition,
-    deletePosition,
+    delPosition,
     editPosition,
   }
 )(Positions);
