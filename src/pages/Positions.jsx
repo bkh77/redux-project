@@ -49,7 +49,13 @@ function Positions({ positions, addPosition, delPosition, editPosition }) {
     <div className="card p-3">
       <div className="row">
         <div className="col">
-          <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" className="form-control" placeholder="Search..." />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+          />
         </div>
         <div className="col-md-8 text-center">
           <h2>Lavozimlar</h2>
@@ -89,7 +95,6 @@ function Positions({ positions, addPosition, delPosition, editPosition }) {
                       <DeleteForeverIcon
                         className="deleteIcon"
                         onClick={() => delPosition(item.id)}
-                        
                       />
                     </td>
                   </tr>
@@ -108,7 +113,7 @@ function Positions({ positions, addPosition, delPosition, editPosition }) {
   );
 }
 export default connect(
-  ({ positionsReducer:{positions} }) => ({ positions }),
+  ({ positionsReducer: { positions } }) => ({ positions }),
   {
     addPosition,
     delPosition,
